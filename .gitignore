@@ -28,3 +28,6 @@ __pycache__/
 
 *.pyc
 your_content/.DS_Store
+.DS_Store
+your_content/.DS_Store
+your_content/themes/.DS_Store
