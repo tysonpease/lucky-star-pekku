@@ -6,7 +6,7 @@ body {
 
 div#container {
     display: inline-block;
-    text-align: left;  /* TP edit, was center */
+    text-align: center;
     margin: 15px;
     padding: 30px;
 }
