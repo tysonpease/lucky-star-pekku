@@ -1,12 +1,12 @@
 /* ADVANCED OPTIONS -- CHANGE AT YOUR OWN RISK */
 
 body {
-    text-align: center;
+    text-align: left;  /* TP edit, was center */
 }
 
 div#container {
     display: inline-block;
-    text-align: center;
+    text-align: left;  /* TP edit, was center */
     margin: 15px;
     padding: 30px;
 }
