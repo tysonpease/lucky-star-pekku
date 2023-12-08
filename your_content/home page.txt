@@ -4,7 +4,7 @@ div {
 }
 </style>
 
-<h1>Lucky Start Pekku</h1>
+<h1>Lucky Star Pekku</h1>
 
 <p>Comic coming soon!</p>
 
