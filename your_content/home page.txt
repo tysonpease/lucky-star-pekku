@@ -6,7 +6,7 @@ body {
 
 <h1><text-align: center>Lucky Start Pekku</text-align></h1>
 
-<p>Comic coming soon!<p>
+<p>Comic coming soon!</p>
 
 <p>What you're seeing is the default website created by comic_git, a static-site generator hosted FOR FREE on GitHub Pages, that YOU can use to publish your own web comic easily and quickly!</p>
 
