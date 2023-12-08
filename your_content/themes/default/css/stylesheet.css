@@ -8,7 +8,6 @@ or use this list of available color names: https://www.w3schools.com/cssref/css_
  */
 
 body {
-    text-align: left;
     font-family: Verdana, Arial, Helvetica, sans-serif;  /* The font of all the text on all pages */
     color: white;  /* The color of the font of most of the text on your website */
     background-color: black;  /* The color of the background behind everything */
