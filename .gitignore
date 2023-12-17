@@ -1,3 +1,19 @@
+.idea/
+venv/
+__pycache__/
+*.pyc
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Compiled output
+/build/
+
 # ignore node dependency directories
 node_modules/
 
@@ -6,10 +22,6 @@ node_modules/
 *.sql
 *.sqlite
 
-.idea/
-venv/
-__pycache__/
-*.pyc
 
 your_content/.DS_Store
 .DS_Store
@@ -20,5 +32,4 @@ your_content/.DS_Store
 your_content/themes/.DS_Store
 your_content/themes/default:css/.DS_Store
 
-# Compiled output
-/build/
+
