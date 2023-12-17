@@ -38,6 +38,7 @@
     <meta property="og:image:width" content="100px" />
     <meta property="og:image:height" content="100px" />
     <title>{{ page_title }} - {{ comic_title }}</title>
+    <script src="/src/index.js"></script>
     {%- endblock %}
 </head>
 <body>
