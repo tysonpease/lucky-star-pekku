@@ -1,5 +1,3 @@
-import { find_get_parameter } from "./utils.js";
-
 let page_info_json;
 let infinite_scroll_div;
 let earliest_comic_loaded = null;
@@ -15,7 +13,7 @@ let load_next_pages_threshold = 1000;
 let comic_base_dir = null;
 let content_base_dir = null;
 
-export async function load_page(local_comic_base_dir, local_content_base_dir) {
+async function load_page(local_comic_base_dir, local_content_base_dir) {
     comic_base_dir = local_comic_base_dir;
     content_base_dir = local_content_base_dir;
     initializing = true;
@@ -214,3 +212,5 @@ function on_scroll(event) {
         set_current_page(new_current_page);
     }
 }
+
+load_page("/", "/");

@@ -1,0 +1,34 @@
+{
+  "name": "lucky-star-pekku",
+  "version": "1.0.0",
+  "description": "Lucky Star Pekku, by Tyson Pease",
+  "repository": "git@github.com:stevefulghum/lucky-star-pekku.git",
+  "author": "Steve Fulghum <steve@fulghum.digital>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "serve": "webpack serve"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-dev-server": "^4.7.2",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "html-bundler-webpack-plugin": "^3.4.2",
+    "html-webpack-plugin": "^5.5.4",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.3.2",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "packageManager": "yarn@4.0.2"
+}

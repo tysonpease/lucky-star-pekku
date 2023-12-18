@@ -1,6 +1,6 @@
-export function ajax_call(url, func, params=null) {
+export function ajax_call(url, func, params = null) {
     const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         switch (this.readyState) {
             case 0:
                 break;
@@ -8,7 +8,12 @@ export function ajax_call(url, func, params=null) {
                 console.log("Ajax opened " + url);
                 break;
             case 2:
-                console.log("Ajax status/headers received " + this.status + " / " + this.getAllResponseHeaders());
+                console.log(
+                    "Ajax status/headers received " +
+                    this.status +
+                    " / " +
+                    this.getAllResponseHeaders()
+                );
                 break;
             case 3:
                 console.log("Ajax loading response text");
@@ -32,9 +37,9 @@ export function ajax_call(url, func, params=null) {
         if (typeof params === "string") {
             post_params = params;
         } else {
-            post_params = Object.keys(params).map(
-                k => encodeURIComponent(k) + "=" + encodeURIComponent(params[k])
-            ).join("&");
+            post_params = Object.keys(params)
+                .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(params[k]))
+                .join("&");
         }
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhttp.send(post_params);
@@ -46,22 +51,22 @@ export function title_case(s) {
 }
 
 export function setCookie(cname, cvalue) {
-  document.cookie = cname + "=" + cvalue + ";";
+    document.cookie = cname + "=" + cvalue + ";";
 }
 
 export function getCookie(cname) {
-  const name = cname + "=";
-  const ca = document.cookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
+    const name = cname + "=";
+    const ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === " ") {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
     }
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
+    return "";
 }
 
 // https://stackoverflow.com/questions/5448545/how-to-retrieve-get-parameters-from-javascript
@@ -81,7 +86,7 @@ export function find_get_parameter(parameter_name) {
 export function init_accordions() {
     let acc = document.getElementsByClassName("accordion-button");
     for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
+        acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
             let panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
