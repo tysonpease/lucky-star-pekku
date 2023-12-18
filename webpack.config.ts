@@ -18,6 +18,10 @@ const config: webpack.Configuration = {
     liveReload: true,
     hot: false,
   },
+  performance: {
+    maxAssetSize: 5_000_000,
+    maxEntrypointSize: 1_000_000,
+  },
   target: 'web',
   plugins: [
     new HtmlBundlerPlugin({
