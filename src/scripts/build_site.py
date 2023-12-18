@@ -333,7 +333,7 @@ def save_page_info_json_file(
     comic_folder: str, page_info_list: List, scheduled_post_count: int
 ):
     d = {"page_info_list": page_info_list, "scheduled_post_count": scheduled_post_count}
-    os.makedirs(f"{comic_folder}comic", exist_ok=True)
+    os.makedirs(f"./build/{comic_folder}comic", exist_ok=True)
     with open(f"./build/{comic_folder}comic/page_info_list.json", "w") as f:
         f.write(dumps(d))
 
