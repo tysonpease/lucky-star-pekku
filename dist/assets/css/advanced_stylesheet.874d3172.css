@@ -217,7 +217,7 @@ body {
     font-family: 'PT Sans', sans-serif;  /* The font of all the text on all pages */
     color: black;  /* The color of the font of most of the text on your website */
     background-color: white;  /* The color of the background behind everything */
-    background-image: url(../img/c253fb6281013734b53f.png);  /* The pattern on the background. Delete to change to a solid color
+    background-image: url(../c253fb6281013734b53f.png);  /* The pattern on the background. Delete to change to a solid color
                                                        or replace with your own image to tile across your background. */
 }
 

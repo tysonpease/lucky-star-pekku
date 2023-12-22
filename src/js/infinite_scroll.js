@@ -13,6 +13,19 @@ let load_next_pages_threshold = 1000;
 let comic_base_dir = null;
 let content_base_dir = null;
 
+async function fetch_all_json_data() {
+    let response = await fetch(`/assets/json/page_info_list.json`);
+    console.log("Fetched page info list");
+    let json = await response.json();
+    page_info_json = json["page_info_list"];
+}
+
+function load_and_go_to_page() {
+    get_starting_page();
+    load_newer_pages();
+    go_to_anchor();
+}
+
 async function load_page(local_comic_base_dir, local_content_base_dir) {
     comic_base_dir = local_comic_base_dir;
     content_base_dir = local_content_base_dir;
@@ -49,19 +62,6 @@ async function load_page(local_comic_base_dir, local_content_base_dir) {
     initializing = false;
 }
 
-async function fetch_all_json_data() {
-    let response = await fetch(`${comic_base_dir}/comic/page_info_list.json`);
-    console.log("Fetched page info list");
-    let json = await response.json();
-    page_info_json = json["page_info_list"];
-}
-
-function load_and_go_to_page() {
-    get_starting_page();
-    load_newer_pages();
-    go_to_anchor();
-}
-
 function get_starting_page() {
     earliest_comic_loaded = 0;
     latest_comic_loaded = -1;
@@ -87,16 +87,19 @@ function get_starting_page() {
 
 function build_comic_div(page) {
     let node = document.createElement("div");
-    node.className = "infinite-page";
-    node.id = page["page_name"];
+
+    Object.assign(node, {
+        class: 'infinite-page',
+        id: page["page_name"],
+    })
 
     let link_node = document.createElement("a");
-    link_node.href = `${comic_base_dir}/comic/${page["page_name"]}/`;
+    link_node.href = `${window.location.origin}/comic/${page["page_name"]}/`;
 
     let image_node = document.createElement("img");
     image_node.className = "infinite-page-image";
     console.log("Adding div for page " + page["page_name"]);
-    image_node.src = `${content_base_dir}/comics/${page["page_name"]}/${page["Filename"]}`;
+    image_node.src = `${window.location.origin}/assets/thumbs/${page["Filename"]}`;
     image_node.title = page["Alt text"];
 
     link_node.appendChild(image_node);

@@ -7,16 +7,17 @@ For any colors, you can represent them in hexadecimal like this (#FF0000 = red)
 or use this list of available color names: https://www.w3schools.com/cssref/css_colors.asp
  */
 
-@import url('../../../fonts/TytyposNextAve-Regular.ttf');
+@font-face {
+    font-family: "Trickster";
+    src: url(../84863d85fb8cd9133a67.ttf) format("TrueType");
+}
 
 body {
-    font-family: TytyposNextAve-Regular, Verdana, Arial, Helvetica, sans-serif;  /* The font of all the text on all pages */
+    font-family: Trickster;
     color: white;  /* The color of the font of most of the text on your website */
     background-color: black;  /* The color of the background behind everything */
-    background-image: url(../img/c253fb6281013734b53f.png);  /* The pattern on the background. Delete to change to a solid color
-                                                       or replace with your own image to tile across your background. */
-    color: purple;
-                                                    }
+    background-image: url(../c253fb6281013734b53f.png);
+}
 
 a {
     color: RebeccaPurple;  /* The color of the hyperlinks */
