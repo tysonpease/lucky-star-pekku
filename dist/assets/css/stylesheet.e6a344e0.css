@@ -15,7 +15,8 @@ body {
     background-color: black;  /* The color of the background behind everything */
     background-image: url(../img/c253fb6281013734b53f.png);  /* The pattern on the background. Delete to change to a solid color
                                                        or replace with your own image to tile across your background. */
-}
+    color: purple;
+                                                    }
 
 a {
     color: RebeccaPurple;  /* The color of the hyperlinks */
