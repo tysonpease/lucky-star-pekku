@@ -330,7 +330,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.10.4":
+"@types/node@npm:*, @types/node@npm:^20.10.5":
   version: 20.10.5
   resolution: "@types/node@npm:20.10.5"
   dependencies:
@@ -2027,7 +2027,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-bundler-webpack-plugin@npm:^3.4.2":
+"html-bundler-webpack-plugin@npm:^3.4.3":
   version: 3.4.3
   resolution: "html-bundler-webpack-plugin@npm:3.4.3"
   dependencies:
@@ -2104,7 +2104,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-webpack-plugin@npm:^5.5.4":
+"html-webpack-plugin@npm:^5.6.0":
   version: 5.6.0
   resolution: "html-webpack-plugin@npm:5.6.0"
   dependencies:
@@ -2596,13 +2596,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lucky-star-pekku@workspace:."
   dependencies:
-    "@types/node": "npm:^20.10.4"
+    "@types/node": "npm:^20.10.5"
     "@types/webpack": "npm:^5.28.5"
     "@types/webpack-dev-server": "npm:^4.7.2"
     copy-webpack-plugin: "npm:^11.0.0"
     css-loader: "npm:^6.8.1"
-    html-bundler-webpack-plugin: "npm:^3.4.2"
-    html-webpack-plugin: "npm:^5.5.4"
+    html-bundler-webpack-plugin: "npm:^3.4.3"
+    html-webpack-plugin: "npm:^5.6.0"
     lodash: "npm:^4.17.21"
     sass: "npm:^1.69.5"
     sass-loader: "npm:^13.3.2"
