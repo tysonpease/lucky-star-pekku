@@ -7,8 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "webpack",
-    "build:site": "node --env-file=.env ./build.mjs ",
+    "build": "node --env-file=.env ./build.mjs && webpack",
+    "build:site": "webpack",
+    "build:comic": "node --env-file=.env ./build.mjs ",
     "serve": "webpack serve"
   },
   "devDependencies": {
