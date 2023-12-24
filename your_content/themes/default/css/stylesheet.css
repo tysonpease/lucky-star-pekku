@@ -13,7 +13,7 @@ or use this list of available color names: https://www.w3schools.com/cssref/css_
 }
 
 body {
-  font-family: Trickster;
+  font-family: Trickster, "Comic Sans MS", sans-serif;
   color: white;  /* The color of the font of most of the text on your website */
   background-color: black;  /* The color of the background behind everything */
   background-image: url("../../../images/background_image.png");
