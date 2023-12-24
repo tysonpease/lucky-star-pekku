@@ -4,6 +4,7 @@ import os
 import re
 import shutil
 import sys
+import mimetypes
 from collections import OrderedDict, defaultdict
 from configparser import RawConfigParser
 from copy import deepcopy
@@ -188,9 +189,9 @@ def build_and_publish_comic_pages(
     processing_times.append((f"Process comic images in '{comic_folder}'", time()))
 
     # Load home page text
-    if os.path.isfile(f"your_content/{comic_folder}home page.txt"):
-        with open(f"your_content/{comic_folder}home page.txt") as f:
-            home_page_text = f.read()
+    if os.path.isfile(f"your_content/{comic_folder}homepage.md"):
+        with open(f"your_content/{comic_folder}homepage.md") as f:
+            home_page_text = MARKDOWN.convert(f.read())
     else:
         home_page_text = ""
 
@@ -410,16 +411,27 @@ def create_comic_data(
     )
     post_html = []
     post_text_paths = [
+        f"your_content/{comic_folder}before post text.md",
         f"your_content/{comic_folder}before post text.txt",
         f"your_content/{comic_folder}before post text.html",
+        page_dir + "post.md",
         page_dir + "post.txt",
+        f"your_content/{comic_folder}after post text.md",
         f"your_content/{comic_folder}after post text.txt",
         f"your_content/{comic_folder}after post text.html",
     ]
     for post_text_path in post_text_paths:
         if os.path.exists(post_text_path):
+            file_type = mimetypes.guess_type(post_text_path)[0]
+            file_extension = os.path.splitext(post_text_path)[1]
+            print(file_extension, file_type)
+
             with open(post_text_path, "rb") as f:
-                post_html.append(f.read().decode("utf-8"))
+                if file_type == "text/markdown" or file_extension == '.md':
+                    post_html.append(MARKDOWN.convert(f.read().decode("utf-8")))
+                else:
+                    post_html.append(f.read().decode("utf-8"))
+
     post_html = MARKDOWN.convert("\n\n".join(post_html))
     d = {
         "page_name": page_info["page_name"],
