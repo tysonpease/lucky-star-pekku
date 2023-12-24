@@ -567,10 +567,8 @@ def write_html_files(
     # Write individual comic pages
     print("Writing {} comic pages...".format(len(comic_data_dicts)))
     for comic_data_dict in comic_data_dicts:
-        html_path = (
-            os.path.join(
-                "build", "comic", f'{comic_data_dict["page_name"]}', "index.html"
-            )
+        html_path = os.path.join(
+            "build", "comic", f'{comic_data_dict["page_name"]}', "index.html"
         )
         comic_data_dict.update(global_values)
         utils.write_to_template("comic", html_path, comic_data_dict)
@@ -598,7 +596,7 @@ def write_other_pages(
             html_path = os.path.join("build", f"{page['template_name']}.html")
         else:
             html_path = os.path.join("build", page["template_name"], "index.html")
-        
+
         if comic_folder:
             html_path = os.path.join(comic_folder, html_path)
         # Don't build latest page if there are no comics published

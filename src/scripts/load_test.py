@@ -20,6 +20,8 @@ Filename = Page_197.png
 Alt text = 
 Storyline = Chapter {chapter_num}
 """
-    with open("../../your_content/comics/" + folder_name + "/info.ini", 'w') as f:
+    with open("../../your_content/comics/" + folder_name + "/info.ini", "w") as f:
         f.write(text)
-    copyfile("Page_197.png", "../../your_content/comics/" + folder_name + "/Page_197.png")
+    copyfile(
+        "Page_197.png", "../../your_content/comics/" + folder_name + "/Page_197.png"
+    )

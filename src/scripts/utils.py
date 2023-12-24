@@ -10,12 +10,14 @@ jinja_environment = None
 def get_comic_url(comic_info: RawConfigParser):
     # Let user-defined comic domain and base directory override all other values
     comic_domain = comic_info.get("Comic Settings", "Comic domain", fallback=None)
-    base_directory = comic_info.get("Comic Settings", "Comic subdirectory", fallback=None)
+    base_directory = comic_info.get(
+        "Comic Settings", "Comic subdirectory", fallback=None
+    )
     if comic_domain is None:
         # If we have a CNAME file, use that for the comic domain
         if os.path.isfile("CNAME"):
             with open("CNAME") as f:
-                comic_domain = f.read().strip('/')
+                comic_domain = f.read().strip("/")
                 base_directory = ""
         # If this is running in GitHub and the domain and base directory were not user-defined, derive them here
         elif "GITHUB_REPOSITORY" in os.environ:
@@ -31,11 +33,14 @@ def get_comic_url(comic_info: RawConfigParser):
     if not comic_domain:
         raise ValueError(
             'Set "Comic domain" in the [Comic Settings] section of your comic_info.ini file '
-            'before building your site locally. Please see the comic_git wiki for more information.'
+            "before building your site locally. Please see the comic_git wiki for more information."
         )
     if not comic_domain.startswith("http"):
-        if (comic_info.has_option("Comic Settings", "Use https when building comic URL") and
-                comic_info.getboolean("Comic Settings", "Use https when building comic URL")):
+        if comic_info.has_option(
+            "Comic Settings", "Use https when building comic URL"
+        ) and comic_info.getboolean(
+            "Comic Settings", "Use https when building comic URL"
+        ):
             comic_domain = "https://" + comic_domain
         else:
             comic_domain = "http://" + comic_domain
@@ -49,7 +54,7 @@ def get_comic_url(comic_info: RawConfigParser):
     return comic_url, base_directory
 
 
-def str_to_list(s: str, delimiter: str=",") -> List[str]:
+def str_to_list(s: str, delimiter: str = ",") -> List[str]:
     """
     split(), but with extra stripping of white space and leading/trailing delimiters
     :param s:
@@ -66,25 +71,31 @@ def find_project_root():
         last_cwd = os.getcwd()
         os.chdir("..")
         if os.getcwd() == last_cwd:
-            raise FileNotFoundError("Couldn't find a folder in the path matching 'your_content'. Make sure you're "
-                                    "running this script from within the comic_git repository.")
+            raise FileNotFoundError(
+                "Couldn't find a folder in the path matching 'your_content'. Make sure you're "
+                "running this script from within the comic_git repository."
+            )
 
 
-def write_to_template(template_name: str, html_path: str, data_dict: Dict=None) -> None:
+def write_to_template(
+    template_name: str, html_path: str, data_dict: Dict = None
+) -> None:
     """
     Searches for either an HTML or a TPL file named <template_name> in first the "templates" folder of your
     theme directory, or the /src/templates directory. It then builds that template at the specified <html_path> using
     the given <data_dict> as a list of variables to pass into the template when it's rendered.
- 
+
     :param template_name: The name of the template file or HTML file you wish to load
-    :param html_path: The path to write the HTML file, relative to the repository root. If you want it to write to a 
+    :param html_path: The path to write the HTML file, relative to the repository root. If you want it to write to a
     directory (e.g. ...github.io/comic_git/cool_stuff/), then add index.html file at the end.
     (e.g. "cool_stuff/index.html")
     :param data_dict: The dictionary of values to pass to the template when it's rendered.
     :return: None
     """
     if jinja_environment is None:
-        raise RuntimeError("Jinja environment was not initialized before write_to_template was called.")
+        raise RuntimeError(
+            "Jinja environment was not initialized before write_to_template was called."
+        )
     try:
         file_contents = jinja_environment.get_template(template_name + ".html").render()
     except TemplateNotFound:

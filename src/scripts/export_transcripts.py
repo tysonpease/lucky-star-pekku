@@ -7,7 +7,6 @@ from urllib.request import urlretrieve
 from xml.etree import ElementTree as ET
 
 
-
 WEBCOMIC_POST_TYPE = "webcomic1"
 TRANSCRIPT_POST_TYPE = "webcomic_transcript"
 

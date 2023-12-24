@@ -29,6 +29,7 @@ const config: webpack.Configuration = {
       loaderOptions: {
         root: path.join(__dirname, "/"),
       },
+      minify: true,
       js: {
         filename: "assets/js/[name].[contenthash:8].js",
       },

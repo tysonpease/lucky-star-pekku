@@ -7,7 +7,6 @@ from urllib.request import urlretrieve
 from xml.etree import ElementTree as ET
 
 
-
 WEBCOMIC_POST_TYPE = "webcomic1"
 ATTACHMENT_POST_TYPE = "attachment"
 
@@ -22,7 +21,7 @@ channel = root[0]
 
 pages = defaultdict(dict)
 
-for child in channel.iter('item'):
+for child in channel.iter("item"):
     # if child.find("title").text in ["Page 1", "Page 2", "Page 3"]:
     #     for c in child:
     #         print(c.tag)
@@ -31,17 +30,21 @@ for child in channel.iter('item'):
     #         print(f"\t{repr(c.text)}")
     #     print("")
 
-    post_name = child.find('{http://wordpress.org/export/1.2/}post_name').text
+    post_name = child.find("{http://wordpress.org/export/1.2/}post_name").text
     if post_name is None:
         continue
     post_type = child.find("{http://wordpress.org/export/1.2/}post_type").text
     if post_type == WEBCOMIC_POST_TYPE:
         if post_name.endswith("-2"):
             post_name = post_name[:-2]
-        pages[post_name]["title"] = child.find('title').text
+        pages[post_name]["title"] = child.find("title").text
         pages[post_name]["page_name"] = post_name
-        pages[post_name]["post_date"] = child.find('{http://wordpress.org/export/1.2/}post_date').text
-        pages[post_name]["text_post"] = child.find('{http://purl.org/rss/1.0/modules/content/}encoded').text
+        pages[post_name]["post_date"] = child.find(
+            "{http://wordpress.org/export/1.2/}post_date"
+        ).text
+        pages[post_name]["text_post"] = child.find(
+            "{http://purl.org/rss/1.0/modules/content/}encoded"
+        ).text
         characters = []
         for c in child.iter("category"):
             if c.attrib["domain"].endswith("storyline"):
@@ -65,8 +68,12 @@ for child in channel.iter('item'):
             post_name = post_name[:-4]
         post_name = post_name.replace("_", "-")
         pages[post_name]["attachment_name"] = post_name
-        pages[post_name]["page_link"] = child.find('{http://wordpress.org/export/1.2/}attachment_url').text
-        pages[post_name]["alt_text"] = child.find('{http://wordpress.org/export/1.2/excerpt/}encoded').text
+        pages[post_name]["page_link"] = child.find(
+            "{http://wordpress.org/export/1.2/}attachment_url"
+        ).text
+        pages[post_name]["alt_text"] = child.find(
+            "{http://wordpress.org/export/1.2/excerpt/}encoded"
+        ).text
     # else:
     #     print(f"Bad post type {post_type} for {child.find('title').text}")
 
@@ -76,7 +83,15 @@ for child in channel.iter('item'):
 for name, page in pages.items():
     if "page_name" in page:
         print(name)
-        for k in ["title", "page_name", "post_date", "text_post", "characters", "page_link", "alt_text"]:
+        for k in [
+            "title",
+            "page_name",
+            "post_date",
+            "text_post",
+            "characters",
+            "page_link",
+            "alt_text",
+        ]:
             if k not in page:
                 print(k)
                 print(page)
@@ -88,16 +103,22 @@ for name, page in pages.items():
             page_filepath = dir_name + "/" + page_filename
             if not os.path.isfile(page_filepath):
                 urlretrieve(page["page_link"], page_filepath)
-            post_date = time.strftime("%B %d, %Y", time.strptime(page["post_date"], "%Y-%m-%d %H:%M:%S"))
+            post_date = time.strftime(
+                "%B %d, %Y", time.strptime(page["post_date"], "%Y-%m-%d %H:%M:%S")
+            )
             # Build files
             with open(dir_name + "/info.ini", "wb") as f:
-                f.write(f"""Title = {page["title"]}
+                f.write(
+                    f"""Title = {page["title"]}
 Post date = {post_date}
 Filename = {page_filename}
 Alt text = {page["alt_text"]}
 Storyline = {page.get("storyline", "")}
 Characters = {", ".join(page["characters"])}
-Tags = """.encode("utf-8"))
+Tags = """.encode(
+                        "utf-8"
+                    )
+                )
             if not page["text_post"]:
                 page["text_post"] = ""
             with open(dir_name + "/post.txt", "wb") as f:
