@@ -3,5 +3,8 @@
 		"stylelint-config-standard",
 		"@stylistic/stylelint-config"
 	],
+	"plugins": [
+		"@stylistic/stylelint-plugin"
+	],	
 	"ignoreFiles": "./dist/**/*.css"
 }

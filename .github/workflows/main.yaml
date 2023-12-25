@@ -41,11 +41,9 @@ jobs:
           python src/scripts/make_requirements_hooks_file.py
           pip install -r src/scripts/requirements_hooks.txt
           npm install
-      - name: Run python build script
+      - name: Run build script
         run: |
-          python src/scripts/build_site.py --delete-scheduled-posts
-      - name: Run webpack
-        run: npm run build
+          npm run build
       - name: Commit files
         run: |
           git config --local user.name "Github Action"
