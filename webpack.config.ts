@@ -23,8 +23,8 @@ const config: webpack.Configuration = {
     liveReload: true,
   },
   performance: {
-    maxAssetSize: 5_000_000,
-    maxEntrypointSize: 1_000_000,
+    maxAssetSize: 7_500_000,
+    maxEntrypointSize: 1_500_000,
   },
   target: "web",
   plugins: [
