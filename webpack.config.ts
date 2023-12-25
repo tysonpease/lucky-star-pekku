@@ -2,6 +2,7 @@ import path from "path";
 import webpack from "webpack";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
+import CSSMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import "webpack-dev-server";
 
 const config: webpack.Configuration = {
@@ -12,6 +13,9 @@ const config: webpack.Configuration = {
     filename: "main.bundle.js",
     assetModuleFilename: "assets/[hash][ext][query]",
     clean: true,
+    environment: {
+      module: true
+    }
   },
   devServer: {
     compress: true,
@@ -63,6 +67,11 @@ const config: webpack.Configuration = {
       },
     ],
   },
+  optimization: {
+    minimizer: [
+      new CSSMinimizerPlugin(),
+    ]
+  }
 };
 
 export default config;
