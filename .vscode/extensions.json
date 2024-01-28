@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "samuelcolvin.jinjahtml",
+        "ms-python.black-formatter",
+        "ms-python.autopep8",
+        "editorconfig.editorconfig",
+        "stylelint.vscode-stylelint"
+    ]
+}
