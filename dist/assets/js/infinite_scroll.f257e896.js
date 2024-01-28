@@ -1,3 +1,5 @@
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
 let page_info_json
 let infinite_scroll_div
 let earliest_comic_loaded = null
@@ -217,3 +219,6 @@ function on_scroll(event) {
 }
 
 load_page('/', '/')
+
+/******/ })()
+;
